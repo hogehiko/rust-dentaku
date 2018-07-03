@@ -2,5 +2,10 @@ digit = { '0'..'9' }
 digit_non_zero = {'1' .. '9'}
 number = {digit_non_zero ~ (digit)*}
 
-addsub_exp = {number ~ (("*" | "/") ~ number)*}
-expression = {addsub_exp ~ (("+" | "-") ~ addsub_exp)*}
+plus = {"+"}
+sub = {"-"}
+mul = {"*"}
+div = {"/"}
+addsub_exp = {muldiv_exp ~ ((plus | sub) ~ muldiv_exp)*}
+muldiv_exp = {number ~ ((mul | div) ~ number)*}
+expression = {addsub_exp}
