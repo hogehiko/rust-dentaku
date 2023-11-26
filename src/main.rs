@@ -16,7 +16,7 @@ fn main() {
 
     loop{
         match io::stdin().read_line(&mut input){
-            Ok(bytes_read) => {
+            Ok(_) => {
                 let pairs = IdentParser::parse(Rule::expression, &input).unwrap_or_else(|e| panic!("{}", e));
                 println!("{}", pairs);
                 for pair in pairs {
@@ -92,7 +92,7 @@ fn  calc <'a>(p:&Pair<'a, Rule>) -> i64{
             }
             0
         }
-        x => panic!("Undefined behavior {}",p.as_str())
+        _ => panic!("Undefined behavior {}",p.as_str())
 
     }
 }
